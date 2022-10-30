@@ -3,6 +3,7 @@ import csv
 from PyQt5.QtWidgets import *
 import webbrowser
 
+
 # PY 형식 파일 import
 from noticeUI import Ui_MainWindow
 from noticeScrapping import crawling
@@ -84,8 +85,9 @@ if __name__ == "__main__":
     window = MainClass()
     # 광운대학교 로그인 사이트 open
     # MacOS
-    chrome_path = 'open -a /Applications/Google\ Chrome.app %s'
+    # chrome_path = 'open -a /Applications/Google\ Chrome.app %s'
     # Windows
-    # chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+    chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
     webbrowser.get(chrome_path).open("https://klas.kw.ac.kr")
     app.exec_()
+    print("fork test")
