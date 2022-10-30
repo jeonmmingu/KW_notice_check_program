@@ -13,8 +13,8 @@ def crawling(pageNum):
 
     # Request url information from the Server
     url = "https://www.kw.ac.kr/ko/life/notice.jsp?MaxRows=10&tpage="+pageNum+"&searchKey=1&searchVal=&srCategoryId="
-    headers = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome'
-                             '/105.0.0.0 Safari/537.36'
+    headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'
+
     }
     # 서버와 코드 연결
     res = requests.get(url, headers=headers)

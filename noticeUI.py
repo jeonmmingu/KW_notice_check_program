@@ -9,18 +9,19 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QDesktopWidget
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         # 화면에 출력되는 위치 설정
         MainWindow.setGeometry(200, 100, 1040, 750)
+        # 화면 중앙에 mainwindow 위치하도록 하는 함수 호출
+        self.center(MainWindow)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(405, 20, 220, 20))
-        # self.label.setAlignment(Qt.AlignCenter)
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(940, 30, 71, 32))
@@ -59,14 +60,21 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "공지사항"))
         self.label.setText(_translate("MainWindow", "컴퓨터정보공학과 공지사항"))
         font = self.label.font()
-        font.setPointSize(20)
-        font.setBold(True)
+        font.setPointSize(10)
+        # font.setBold(True)
         self.label.setFont(font)
         self.pushButton.setText(_translate("MainWindow", "Refresh"))
         self.pushButton_2.setText(_translate("MainWindow", "1"))
         self.pushButton_3.setText(_translate("MainWindow", "2"))
         self.pushButton_4.setText(_translate("MainWindow", "3"))
         self.pushButton_5.setText(_translate("MainWindow", "4"))
+
+    # 화면 중앙에 mainwindow 위치하도록 하는 코드
+    def center(self, Mainwindow):
+        qr = Mainwindow.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        Mainwindow.move(qr.topLeft())
 
 
 if __name__ == "__main__":
