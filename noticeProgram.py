@@ -78,16 +78,11 @@ if __name__ == "__main__":
     f = open("noticeTitle.csv", "w", encoding="utf-8-sig", newline="")
     f.close()
     # Crawling part
-    for i in range(1, 10):
+    for i in range(1, 20):
         crawling(str(i))
+    # 광운대학교 로그인 사이트 open
+    webbrowser.open("https://klas.kw.ac.kr")
     # UI part
     app = QApplication(sys.argv)
     window = MainClass()
-    # 광운대학교 로그인 사이트 open
-    # MacOS
-    # chrome_path = 'open -a /Applications/Google\ Chrome.app %s'
-    # Windows
-    chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-    webbrowser.get(chrome_path).open("https://klas.kw.ac.kr")
     app.exec_()
-    print("fork test")
