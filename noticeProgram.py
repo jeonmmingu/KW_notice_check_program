@@ -1,23 +1,28 @@
+# import multiprocessing
 from sys import argv
-from webbrowser import open as web_open
-from noticeUI import MainClass
+from noticeUI import Manager
 from PyQt5.QtWidgets import QApplication
 from noticeScrapping import *
+from urllib3 import disable_warnings
+from urllib3.exceptions import InsecureRequestWarning
 
 if __name__ == "__main__":
-    # noticeTitle.csv 초기화
-    f = open("noticeTitle.csv", "w", encoding="utf-8-sig", newline="")
-    f.close()
-    # Crawling part
-    for i in range(1, 20):
-        KwCrawling(str(i), "noticeTitle.csv")
-        CeCrawling(str(i), "CE.csv")
-        CsCrawling(str(i), "CS.csv")
-        IcCrawling(str(i), "IC.csv")
+    # disable warnings code
+    disable_warnings(InsecureRequestWarning)
 
-    # 광운 대학교 로그인 사이트 open
-    web_open("https://klas.kw.ac.kr")
-    # UI part
+    # define constant
+    KW_PAGE = 10
+    CE_PAGE = 10
+    CS_PAGE = 10
+    IC_PAGE = 10
+
+    # Crawling part
+    kwCrawling(KW_PAGE, "KW.csv")
+    ceCrawling(CE_PAGE, "CE.csv")
+    csCrawling(CS_PAGE, "CS.csv")
+    icCrawling(IC_PAGE, "IC.csv")
+
+    # UI 연결
     app = QApplication(argv)
-    window = MainClass()
+    window = Manager()
     app.exec_()
