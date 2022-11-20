@@ -65,31 +65,76 @@ class Ui_MainWindow(object):
         self.icNoticeLabel.setObjectName("icNoticeLabel")
         self.totalNoticeImage = QtWidgets.QPushButton(self.centralwidget)
         self.totalNoticeImage.setGeometry(QtCore.QRect(130, 200, 150, 150))
-        self.totalNoticeImage.setStyleSheet("border-image:url(\"./image/KW.png\");border:0px")
+        self.totalNoticeImage.setStyleSheet("""QPushButton{
+                                                    border-image:url(\"./image/KW.png\");
+                                                    border:0px;
+                                                }
+                                                
+                                                QPushButton:hover{
+                                                    border-image:url(\"./image/KW.png\") 20 20 20 20;
+                                                    border:0px;
+                                                }"""
+                                            )
         self.totalNoticeImage.setText("")
         self.totalNoticeImage.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.totalNoticeImage.setObjectName("totalNoticeImage")
         self.ceNoticeImage = QtWidgets.QPushButton(self.centralwidget)
         self.ceNoticeImage.setGeometry(QtCore.QRect(750, 200, 150, 150))
-        self.ceNoticeImage.setStyleSheet("border-image:url(\"./image/CE.png\");border:0px")
+        self.ceNoticeImage.setStyleSheet("""QPushButton{
+                                                border-image:url(\"./image/CE.png\");
+                                                border:0px;
+                                            }
+                                            
+                                            QPushButton:hover{
+                                                border-image:url(\"./image/CE.png\") 20 20 20 20;
+                                                border:0px;
+                                                }"""
+                                         )
         self.ceNoticeImage.setText("")
         self.ceNoticeImage.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.ceNoticeImage.setObjectName("ceNoticeImage")
         self.csNoticeImage = QtWidgets.QPushButton(self.centralwidget)
         self.csNoticeImage.setGeometry(QtCore.QRect(130, 470, 150, 150))
-        self.csNoticeImage.setStyleSheet("border-image:url(\"./image/CS.png\");border:0px")
+        self.csNoticeImage.setStyleSheet("""QPushButton{
+                                                border-image:url(\"./image/CS.png\");
+                                                border:0px;
+                                            }
+
+                                            QPushButton:hover{
+                                                border-image:url(\"./image/CS.png\") 20 20 20 20;
+                                                border:0px;
+                                                }"""
+                                         )
         self.csNoticeImage.setText("")
         self.csNoticeImage.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.csNoticeImage.setObjectName("csNoticeImage")
         self.icNoticeImage = QtWidgets.QPushButton(self.centralwidget)
         self.icNoticeImage.setGeometry(QtCore.QRect(750, 470, 150, 150))
-        self.icNoticeImage.setStyleSheet("border-image:url(\"./image/IC.png\");border:0px")
+        self.icNoticeImage.setStyleSheet("""QPushButton{
+                                                border-image:url(\"./image/IC.png\");
+                                                border:0px;
+                                            }
+
+                                            QPushButton:hover{
+                                                border-image:url(\"./image/IC.png\") 20 20 20 20;
+                                                border:0px;
+                                            }"""
+                                         )
         self.icNoticeImage.setText("")
         self.icNoticeImage.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.icNoticeImage.setObjectName("icNoticeImage")
         self.kwImage = QtWidgets.QPushButton(self.centralwidget)
-        self.kwImage.setGeometry(QtCore.QRect(380, 270, 280, 280))
-        self.kwImage.setStyleSheet("border-image:url(\"./image/KWU.png\");border:0px")
+        self.kwImage.setGeometry(QtCore.QRect(400, 290, 240, 240))
+        self.kwImage.setStyleSheet("""QPushButton{
+                                                border-image:url(\"./image/KWU.png\");
+                                                border:0px;                                              
+                                            }
+
+                                      QPushButton:hover{
+                                                border-image:url(\"./image/KWU.png\");
+                                                border:0px;
+                                            }"""
+                                    )
         self.kwImage.setText("")
         self.kwImage.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.kwImage.setObjectName("kwImage")
