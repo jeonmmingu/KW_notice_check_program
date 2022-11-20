@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.titleLabel = QtWidgets.QLabel(self.centralwidget)
-        self.titleLabel.setGeometry(QtCore.QRect(220, 40, 600, 130))
+        self.titleLabel.setGeometry(QtCore.QRect(120, 40, 800, 130))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -65,31 +65,76 @@ class Ui_MainWindow(object):
         self.icNoticeLabel.setObjectName("icNoticeLabel")
         self.totalNoticeImage = QtWidgets.QPushButton(self.centralwidget)
         self.totalNoticeImage.setGeometry(QtCore.QRect(130, 200, 150, 150))
-        self.totalNoticeImage.setStyleSheet("border-image:url(\"./image/KW.png\");border:0px")
+        self.totalNoticeImage.setStyleSheet("""QPushButton{
+                                                    border-image:url(\"./image/KW.png\");
+                                                    border:0px;
+                                                }
+                                                
+                                                QPushButton:hover{
+                                                    border-image:url(\"./image/KW.png\") 20 20 20 20;
+                                                    border:0px;
+                                                }"""
+                                            )
         self.totalNoticeImage.setText("")
         self.totalNoticeImage.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.totalNoticeImage.setObjectName("totalNoticeImage")
         self.ceNoticeImage = QtWidgets.QPushButton(self.centralwidget)
         self.ceNoticeImage.setGeometry(QtCore.QRect(750, 200, 150, 150))
-        self.ceNoticeImage.setStyleSheet("border-image:url(\"./image/CE.png\");border:0px")
+        self.ceNoticeImage.setStyleSheet("""QPushButton{
+                                                border-image:url(\"./image/CE.png\");
+                                                border:0px;
+                                            }
+                                            
+                                            QPushButton:hover{
+                                                border-image:url(\"./image/CE.png\") 20 20 20 20;
+                                                border:0px;
+                                                }"""
+                                         )
         self.ceNoticeImage.setText("")
         self.ceNoticeImage.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.ceNoticeImage.setObjectName("ceNoticeImage")
         self.csNoticeImage = QtWidgets.QPushButton(self.centralwidget)
         self.csNoticeImage.setGeometry(QtCore.QRect(130, 470, 150, 150))
-        self.csNoticeImage.setStyleSheet("border-image:url(\"./image/CS.png\");border:0px")
+        self.csNoticeImage.setStyleSheet("""QPushButton{
+                                                border-image:url(\"./image/CS.png\");
+                                                border:0px;
+                                            }
+
+                                            QPushButton:hover{
+                                                border-image:url(\"./image/CS.png\") 20 20 20 20;
+                                                border:0px;
+                                                }"""
+                                         )
         self.csNoticeImage.setText("")
         self.csNoticeImage.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.csNoticeImage.setObjectName("csNoticeImage")
         self.icNoticeImage = QtWidgets.QPushButton(self.centralwidget)
         self.icNoticeImage.setGeometry(QtCore.QRect(750, 470, 150, 150))
-        self.icNoticeImage.setStyleSheet("border-image:url(\"./image/IC.png\");border:0px")
+        self.icNoticeImage.setStyleSheet("""QPushButton{
+                                                border-image:url(\"./image/IC.png\");
+                                                border:0px;
+                                            }
+
+                                            QPushButton:hover{
+                                                border-image:url(\"./image/IC.png\") 20 20 20 20;
+                                                border:0px;
+                                            }"""
+                                         )
         self.icNoticeImage.setText("")
         self.icNoticeImage.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.icNoticeImage.setObjectName("icNoticeImage")
         self.kwImage = QtWidgets.QPushButton(self.centralwidget)
-        self.kwImage.setGeometry(QtCore.QRect(380, 270, 280, 280))
-        self.kwImage.setStyleSheet("border-image:url(\"./image/KWU.png\");border:0px")
+        self.kwImage.setGeometry(QtCore.QRect(400, 290, 240, 240))
+        self.kwImage.setStyleSheet("""QPushButton{
+                                                border-image:url(\"./image/KWU.png\");
+                                                border:0px;                                              
+                                            }
+
+                                      QPushButton:hover{
+                                                border-image:url(\"./image/KWU.png\");
+                                                border:0px;
+                                            }"""
+                                    )
         self.kwImage.setText("")
         self.kwImage.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.kwImage.setObjectName("kwImage")
@@ -138,7 +183,7 @@ class Ui_noticeWindow(object):
         self.backButton.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
         self.backButton.setObjectName("backButton")
         self.majorTitle = QtWidgets.QLabel(self.centralwidget)
-        self.majorTitle.setGeometry(QtCore.QRect(310, 30, 321, 41))
+        self.majorTitle.setGeometry(QtCore.QRect(310, 30, 400, 41))
         font = QtGui.QFont()
         font.setFamily("BM Dohyeon")
         font.setPointSize(24)
@@ -149,19 +194,22 @@ class Ui_noticeWindow(object):
         self.majorTitle.setScaledContents(True)
         self.majorTitle.setAlignment(QtCore.Qt.AlignCenter)
         self.majorTitle.setObjectName("majorTitle")
-        self.refreshButton = QtWidgets.QPushButton(self.centralwidget)
-        self.refreshButton.setGeometry(QtCore.QRect(900, 80, 75, 32))
-        self.refreshButton.setObjectName("refreshButton")
         self.noticeTableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.noticeTableWidget.setGeometry(QtCore.QRect(40, 110, 931, 581))
         self.noticeTableWidget.setObjectName("noticeTableWidget")
         self.noticeTableWidget.setColumnCount(0)
         self.noticeTableWidget.setRowCount(0)
         self.fixButton = QtWidgets.QPushButton(self.centralwidget)
-        self.fixButton.setGeometry(QtCore.QRect(40, 80, 441, 32))
+        self.fixButton.setGeometry(QtCore.QRect(40, 80, 436, 30))
         self.fixButton.setObjectName("fixButton")
+        self.generalButton = QtWidgets.QPushButton(self.centralwidget)
+        self.generalButton.setGeometry(QtCore.QRect(476, 80, 436, 30))
+        self.generalButton.setObjectName("fixButton_2")
+        self.refreshButton = QtWidgets.QPushButton(self.centralwidget)
+        self.refreshButton.setGeometry(QtCore.QRect(912, 80, 57, 30))
+        self.refreshButton.setObjectName("refreshButton")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(1040, 80, 181, 31))
+        self.label.setGeometry(QtCore.QRect(1040, 80, 181, 30))
         font = QtGui.QFont()
         font.setFamily("BM Dohyeon")
         font.setPointSize(14)
@@ -174,9 +222,6 @@ class Ui_noticeWindow(object):
         self.bookMarkTableWidget.setObjectName("bookMarkTableWidget")
         self.bookMarkTableWidget.setColumnCount(0)
         self.bookMarkTableWidget.setRowCount(0)
-        self.generalButton = QtWidgets.QPushButton(self.centralwidget)
-        self.generalButton.setGeometry(QtCore.QRect(470, 80, 441, 32))
-        self.generalButton.setObjectName("fixButton_2")
         noticeWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(noticeWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1300, 24))
@@ -245,7 +290,7 @@ class Ui_noticeWindow(object):
             tableWidget.setRowCount(len(noticeInfo))
             tableWidget.setColumnCount(6)
             # 행의 폭을 열 마다 다르게 조정
-            tableWidget.setColumnWidth(0, int(noticewindow.width() * 16 / 41))
+            tableWidget.setColumnWidth(0, int(noticewindow.width() * 63 / 164))
             tableWidget.setColumnWidth(1, int(noticewindow.width() * 3 / 41))
             tableWidget.setColumnWidth(2, int(noticewindow.width() * 3 / 41))
             tableWidget.setColumnWidth(3, int(noticewindow.width() * 3 / 41))
@@ -295,10 +340,10 @@ class Ui_noticeWindow(object):
             tableWidget.setRowCount(len(noticeInfo))
             tableWidget.setColumnCount(4)
             # 행의 폭을 열 마다 다르게 조정
-            tableWidget.setColumnWidth(0, int(tableWidget.width() * 23 / 40))
-            tableWidget.setColumnWidth(1, int(tableWidget.width() * 8 / 40))
-            tableWidget.setColumnWidth(2, int(tableWidget.width() * 6 / 40))
-            tableWidget.setColumnWidth(3, int(tableWidget.width() * 2 / 40))
+            tableWidget.setColumnWidth(0, int(tableWidget.width() * 73 / 100))
+            tableWidget.setColumnWidth(1, int(tableWidget.width() * 6 / 50))
+            tableWidget.setColumnWidth(2, int(tableWidget.width() * 3 / 50))
+            tableWidget.setColumnWidth(3, int(tableWidget.width() * 2 / 50))
             # 열 이름 붙이는 부분
             colum_title = ["제목", "작성일", "조회수", "Add"]
             tableWidget.setHorizontalHeaderLabels(colum_title)
@@ -370,15 +415,14 @@ class Ui_noticeWindow(object):
                 Qtwid = QtWidgets.QWidget(self.centralwidget)
                 QMessageBox.about(Qtwid, "중복 에러", "이미 즐겨 찾기에 존재하는 공지입니다.")
                 return
-
         if major == "KW.csv":
-            f = open("BookMark/KW_BookMark.csv", "a", encoding="utf-8-sig")
+            f = open("BookMark/KW_BookMark.csv", "a", encoding="utf-8-sig", newline="")
         elif major == "CE.csv":
-            f = open("BookMark/CE_BookMark.csv", "a", encoding="utf-8-sig")
+            f = open("BookMark/CE_BookMark.csv", "a", encoding="utf-8-sig", newline="")
         elif major == "CS.csv":
-            f = open("BookMark/CS_BookMark.csv", "a", encoding="utf-8-sig")
+            f = open("BookMark/CS_BookMark.csv", "a", encoding="utf-8-sig", newline="")
         elif major == "IC.csv":
-            f = open("BookMark/IC_BookMark.csv", "a", encoding="utf-8-sig")
+            f = open("BookMark/IC_BookMark.csv", "a", encoding="utf-8-sig", newline="")
         writer = csv.writer(f)
         writer.writerow([titleLabel])
         f.close()
@@ -404,13 +448,13 @@ class Ui_noticeWindow(object):
                 result.remove(i)
 
         if major == "KW.csv":
-            f = open("BookMark/KW_BookMark.csv", "w", encoding="utf-8-sig")
+            f = open("BookMark/KW_BookMark.csv", "w", encoding="utf-8-sig", newline="")
         elif major == "CE.csv":
-            f = open("BookMark/CE_BookMark.csv", "w", encoding="utf-8-sig")
+            f = open("BookMark/CE_BookMark.csv", "w", encoding="utf-8-sig", newline="")
         elif major == "CS.csv":
-            f = open("BookMark/CS_BookMark.csv", "w", encoding="utf-8-sig")
+            f = open("BookMark/CS_BookMark.csv", "w", encoding="utf-8-sig", newline="")
         elif major == "IC.csv":
-            f = open("BookMark/IC_BookMark.csv", "w", encoding="utf-8-sig")
+            f = open("BookMark/IC_BookMark.csv", "w", encoding="utf-8-sig", newline="")
         writer = csv.writer(f)
         writer.writerows(result)
         f.close()
@@ -441,6 +485,7 @@ class Ui_noticeWindow(object):
         row = 0
         column = 0
         for i in bookMarkInfo:
+            # print(i)
             label = QLabel()
             label.setText(i[0])
             label.setOpenExternalLinks(True)
@@ -502,7 +547,6 @@ class Manager(QMainWindow):
         ui.csNoticeImage.clicked.connect(lambda: self.noticeWindow("CS.csv", '0'))
         ui.icNoticeImage.clicked.connect(lambda: self.noticeWindow("IC.csv", '0'))
         self.show()
-
 
 if __name__ == "__main__":
     from sys import argv
