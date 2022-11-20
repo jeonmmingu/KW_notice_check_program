@@ -7,6 +7,7 @@ from webbrowser import open as web_open
 import csv
 import os
 
+
 class Ui_MainWindow(object):
     def __init__(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -171,6 +172,7 @@ class Ui_MainWindow(object):
     def printKlasPage(self):
         web_open("http://klas.kw.ac.kr")
 
+
 class Ui_noticeWindow(object):
     def __init__(self, noticeWindow, filename, flag):
         noticeWindow.setObjectName("noticeWindow")
@@ -262,22 +264,22 @@ class Ui_noticeWindow(object):
             lambda: self.setNoticeTableWidgetData(noticeWindow, self.noticeTableWidget, self.bookMarkTableWidget, filename,
                                             "1"))
         if filename == "KW.csv":
-            self.refreshButton.clicked.connect(lambda: kwCrawling(3, filename))
+            self.refreshButton.clicked.connect(lambda: crawling(3, filename))
             self.refreshButton.clicked.connect(
                 lambda: self.setNoticeTableWidgetData(noticeWindow, self.noticeTableWidget, self.bookMarkTableWidget,
                                                 filename, flag))
         elif filename == "CE.csv":
-            self.refreshButton.clicked.connect(lambda: ceCrawling(3, filename))
+            self.refreshButton.clicked.connect(lambda: crawling(3, filename))
             self.refreshButton.clicked.connect(
                 lambda: self.setNoticeTableWidgetData(noticeWindow, self.noticeTableWidget, self.bookMarkTableWidget,
                                                 filename, flag))
         elif filename == "CS.csv":
-            self.refreshButton.clicked.connect(lambda: csCrawling(3, filename))
+            self.refreshButton.clicked.connect(lambda: crawling(3, filename))
             self.refreshButton.clicked.connect(
                 lambda: self.setNoticeTableWidgetData(noticeWindow, self.noticeTableWidget, self.bookMarkTableWidget,
                                                 filename, flag))
         elif filename == "IC.csv":
-            self.refreshButton.clicked.connect(lambda: icCrawling(3, filename))
+            self.refreshButton.clicked.connect(lambda: crawling(3, filename))
             self.refreshButton.clicked.connect(
                 lambda: self.setNoticeTableWidgetData(noticeWindow, self.noticeTableWidget, self.bookMarkTableWidget,
                                                 filename, flag))
@@ -290,12 +292,9 @@ class Ui_noticeWindow(object):
             tableWidget.setRowCount(len(noticeInfo))
             tableWidget.setColumnCount(6)
             # 행의 폭을 열 마다 다르게 조정
-            tableWidget.setColumnWidth(0, int(noticewindow.width() * 63 / 164))
-            tableWidget.setColumnWidth(1, int(noticewindow.width() * 3 / 41))
-            tableWidget.setColumnWidth(2, int(noticewindow.width() * 3 / 41))
-            tableWidget.setColumnWidth(3, int(noticewindow.width() * 3 / 41))
-            tableWidget.setColumnWidth(4, int(noticewindow.width() * 2 / 41))
-            tableWidget.setColumnWidth(5, int(noticewindow.width() * 1 / 41))
+            tableWidget.setColumnWidth(5, int(noticewindow.width() * 1 / 50))
+            tableWidget.setColumnWidth(4, int(noticewindow.width() * 2 / 50))
+            tableWidget.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)
             # 열 이름 붙이는 부분
             colum_title = ["제목", "작성일", "수정일", "기재한 곳", "조회수", "Add"]
             tableWidget.setHorizontalHeaderLabels(colum_title)
@@ -304,7 +303,7 @@ class Ui_noticeWindow(object):
             row = 0
             column = 0
             url = ""
-            checkBoxes = []
+            buttonList = []
             for i in noticeInfo:
                 hyperlink = ""
                 for j in i:
@@ -323,16 +322,16 @@ class Ui_noticeWindow(object):
                         tableWidget.setItem(column, row, QTableWidgetItem(j))
                         row += 1
                     list_seq += 1
-                # add 부분에 checkBox 추가
-                checkBox = QPushButton()
-                checkBox.setText("")
-                checkBoxes.append([checkBox, hyperlink, column])
+                # add 부분에 button 추가
+                button = QPushButton()
+                button.setText("")
+                buttonList.append([button, hyperlink, column])
                 list_seq = 0
                 row = 0
                 column += 1
-            for checkBox in checkBoxes:
-                checkBox[0].clicked.connect(partial(self.addBookMark, checkBox[1], bookMarkTableWidget, filename))
-                tableWidget.setCellWidget(checkBox[2], 5, checkBox[0])
+            for button in buttonList:
+                button[0].clicked.connect(partial(self.addBookMark, button[1], bookMarkTableWidget, filename))
+                tableWidget.setCellWidget(button[2], 5, button[0])
         else:
             # csv 파일 정보를 list로 받아옴
             noticeInfo = self.loadNoticeInfo(filename, flag)
@@ -340,10 +339,9 @@ class Ui_noticeWindow(object):
             tableWidget.setRowCount(len(noticeInfo))
             tableWidget.setColumnCount(4)
             # 행의 폭을 열 마다 다르게 조정
-            tableWidget.setColumnWidth(0, int(tableWidget.width() * 73 / 100))
-            tableWidget.setColumnWidth(1, int(tableWidget.width() * 6 / 50))
             tableWidget.setColumnWidth(2, int(tableWidget.width() * 3 / 50))
             tableWidget.setColumnWidth(3, int(tableWidget.width() * 2 / 50))
+            tableWidget.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)
             # 열 이름 붙이는 부분
             colum_title = ["제목", "작성일", "조회수", "Add"]
             tableWidget.setHorizontalHeaderLabels(colum_title)
@@ -352,7 +350,7 @@ class Ui_noticeWindow(object):
             row = 0
             column = 0
             url = ""
-            checkBoxes = []
+            buttonList = []
             for i in noticeInfo:
                 hyperlink = ""
                 for j in i:
@@ -371,17 +369,17 @@ class Ui_noticeWindow(object):
                         tableWidget.setItem(column, row, QTableWidgetItem(j))
                         row += 1
                     list_seq += 1
-                # add 부분에 checkBox 추가
-                checkBox = QPushButton()
-                checkBox.setText("")
-                checkBoxes.append([checkBox, hyperlink, column])
+                # add 부분에 button 추가
+                button = QPushButton()
+                button.setText("")
+                buttonList.append([button, hyperlink, column])
                 list_seq = 0
                 row = 0
                 column += 1
 
-            for checkBox in checkBoxes:
-                checkBox[0].clicked.connect(partial(self.addBookMark, checkBox[1], bookMarkTableWidget, filename))
-                tableWidget.setCellWidget(checkBox[2], 3, checkBox[0])
+            for button in buttonList:
+                button[0].clicked.connect(partial(self.addBookMark, button[1], bookMarkTableWidget, filename))
+                tableWidget.setCellWidget(button[2], 3, button[0])
 
     def loadNoticeInfo(self, filename, flag) -> list:
         path = "./csvFiles/" + filename
@@ -476,8 +474,8 @@ class Ui_noticeWindow(object):
         bookMarkTableWidget.setRowCount(len(bookMarkInfo))
         bookMarkTableWidget.setColumnCount(2)
         # 행의 폭을 열 마다 다르게 조정
-        bookMarkTableWidget.setColumnWidth(0, int(bookMarkTableWidget.width() * 32 / 40))
-        bookMarkTableWidget.setColumnWidth(1, int(bookMarkTableWidget.width() * 5 / 40))
+        bookMarkTableWidget.setColumnWidth(1, int(bookMarkTableWidget.width() * 1 / 40))
+        bookMarkTableWidget.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)
         # 열 이름 붙이는 부분
         colum_title = ["제목", "Del"]
         bookMarkTableWidget.setHorizontalHeaderLabels(colum_title)
@@ -485,16 +483,15 @@ class Ui_noticeWindow(object):
         row = 0
         column = 0
         for i in bookMarkInfo:
-            # print(i)
             label = QLabel()
             label.setText(i[0])
             label.setOpenExternalLinks(True)
             bookMarkTableWidget.setCellWidget(row, column, label)
             column += 1
-            checkBox = QPushButton()
-            checkBox.setText("")
-            checkBox.clicked.connect(partial(self.delBookMark, i[0], self.bookMarkTableWidget, major))
-            bookMarkTableWidget.setCellWidget(row, column, checkBox)
+            button = QPushButton()
+            button.setText("")
+            button.clicked.connect(partial(self.delBookMark, i[0], self.bookMarkTableWidget, major))
+            bookMarkTableWidget.setCellWidget(row, column, button)
             row += 1
             column = 0
 
@@ -512,6 +509,7 @@ class Ui_noticeWindow(object):
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         Mainwindow.move(qr.topLeft())
+
 
 class Manager(QMainWindow):
     def __init__(self):
@@ -547,6 +545,7 @@ class Manager(QMainWindow):
         ui.csNoticeImage.clicked.connect(lambda: self.noticeWindow("CS.csv", '0'))
         ui.icNoticeImage.clicked.connect(lambda: self.noticeWindow("IC.csv", '0'))
         self.show()
+
 
 if __name__ == "__main__":
     from sys import argv

@@ -1,10 +1,9 @@
-# import multiprocessing
 from sys import argv
 from noticeUI import Manager
 from PyQt5.QtWidgets import QApplication
 from noticeScrapping import *
 from urllib3 import disable_warnings
-from urllib3.exceptions import InsecureRequestWarning
+from urllib3.exceptions import InsecureRequestWarning\
 
 if __name__ == "__main__":
     # disable warnings code
@@ -17,10 +16,10 @@ if __name__ == "__main__":
     IC_PAGE = 10
 
     # Crawling part
-    kwCrawling(KW_PAGE, "KW.csv")
-    ceCrawling(CE_PAGE, "CE.csv")
-    csCrawling(CS_PAGE, "CS.csv")
-    icCrawling(IC_PAGE, "IC.csv")
+    crawling(KW_PAGE, "KW.csv")
+    crawling(CE_PAGE, "CE.csv")
+    crawling(CS_PAGE, "CS.csv")
+    crawling(IC_PAGE, "IC.csv")
 
     # UI 연결
     app = QApplication(argv)
