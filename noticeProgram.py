@@ -2,14 +2,11 @@ from sys import argv
 from noticeUI import Manager
 from PyQt5.QtWidgets import QApplication
 from noticeScrapping import *
-from urllib3 import disable_warnings
-from urllib3.exceptions import InsecureRequestWarning\
+
+
 
 if __name__ == "__main__":
-    # disable warnings code
-    disable_warnings(InsecureRequestWarning)
-
-    # define constant
+    # Define crawling number constant
     KW_PAGE = 10
     CE_PAGE = 10
     CS_PAGE = 10
@@ -25,3 +22,4 @@ if __name__ == "__main__":
     app = QApplication(argv)
     window = Manager()
     app.exec_()
+
